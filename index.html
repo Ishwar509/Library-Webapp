@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Book Base</h1>
+        </div>
+        <div class="main">
+            <div class="book-card-container">
+                <div class="card book">
+                    <p class="title">Game of Thrones</p>
+                    <p class="author">By: George R.R Martin</p>
+                    <p class="pages">Pages: 900</p>
+                    <p class="btnGroup">
+                        <button class="readStatusBtn">Mark as Read</button>
+                        <button class="delBtn">Delete</button>
+                    </p>
+                </div>
+                <div class="card dialogBtn-card">
+                    <button class="showDialogBtn">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            Footer
+        </div>
+    </div>
+
+    <dialog>
+        <form method="dialog">
+            <p>
+                <label for="titleInput">Title </label><br>
+                <input type="text" id="titleInput" name="title" required minlength="1" maxlength="20" pattern="^[\w]+$">
+            </p>
+            <p>
+                <label for="authorInput">Author </label><br>
+                <input type="text" name="author" id="authorInput" required minlength="1" maxlength="20" pattern="^[\w]+$">
+            </p>
+            <p>
+                <label for="pagesInput">Pages</label><br>
+                <input type="number" name="pages" id="pagesInput" min="1" max="2000" value="1" required>
+            </p>
+            <p>
+                <label for="isRead">Have you read this book ?</label>
+                <input type="checkbox" id="isRead" name="isRead">
+            </p>
+            <p>
+                <button class="add-book">Add Book</button>
+                <button type="reset" class="cancelBtn">Cancel</button>
+            </p>
+        </form>
+    </dialog>
+
+    <template>
+        <p class="title"></p>
+        <p class="author"></p>
+        <p class="pages"></p>
+        <p class="btnGroup">
+            <button class="readStatusBtn">Mark as Read</button>
+            <button class="delBtn">Delete</button>
+        </p>
+    </template>
+</body>
+
+</html>
