@@ -21,7 +21,7 @@ function setCardContent(card, book) {
 }
 
 function setCardState(card, book) {
-    const readBtn = card.querySelector('.readStatusBtn');
+    const readBtn = card.querySelector('button[data-action="changeStatus"]');
 
     if (book.isRead) {
         readBtn.textContent = "Mark as unread";

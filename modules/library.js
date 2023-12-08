@@ -1,13 +1,17 @@
 
 class Library {
-    bookCollection = [];
+    #bookCollection = [];
 
     addBookToLibrary(book){
-        this.bookCollection.push(book);
+        this.#bookCollection.push(book);
     }
 
     removeBookFromLibrary(index){
-        this.bookCollection.splice(index, 1);
+        this.#bookCollection.splice(index, 1);
+    }
+
+    getBook(index){
+        return this.#bookCollection[index];
     }
 }
 

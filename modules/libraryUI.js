@@ -5,11 +5,17 @@ import {createCard, deleteCard, setCardState} from "./bookCard.js";
 
 const formElement = document.querySelector('form');
 const modalBox = document.querySelector('dialog');
-const showModalBoxBtn = document.querySelector('.showDialogBtn');
-const cancelBtn = document.querySelector('.cancelBtn');
-const bookCardContainer = document.querySelector('.book-card-container')
+const showModalBoxBtn = document.querySelector('button[data-action="addBook"]');
+const cancelBtn = document.querySelector('button[data-action="closeForm"]');
+const bookCardContainer = document.querySelector('.bookCardContainer')
 
 function loadLibraryUI(){
+    setupEventListeners();
+    addBook({title:'Game of Thrones', author: 'George R.R Martin', pages: 900, isRead: false});
+    addBook({title: 'It', author: 'Stephen King', pages: 600, isRead: false});
+}
+
+function setupEventListeners(){
     showModalBoxBtn.addEventListener('click', () => {
         modalBox.showModal();
     });
@@ -18,13 +24,14 @@ function loadLibraryUI(){
         modalBox.close();
     });
     
-    formElement.addEventListener('submit', addBook);
+    formElement.addEventListener('submit', ()=>{
+        addBook();
+    });
     
     bookCardContainer.addEventListener('click', performEvent);
 }
 
-function addBook(){
-    const bookData = getFormData();
+function addBook(bookData = getFormData(formElement)){
     const book = new Book(bookData);
     myLibrary.addBookToLibrary(book);
     createCard(book);
@@ -36,16 +43,18 @@ function findCardIndex(card){
 
 function performEvent(e){
     const card = e.target.closest('.book');
-
-    if (e.target.classList.contains('delBtn')) {
+    const action = e.target.dataset.action;
+    
+    if (action === 'delete') {
         const index = findCardIndex(card);
         myLibrary.removeBookFromLibrary(index); 
         deleteCard(card);
     }
-    else if (e.target.classList.contains('readStatusBtn')) {
+    else if (action === 'changeStatus') {
         const index = findCardIndex(card);
-        myLibrary.bookCollection[index].changeReadStatus();
-        setCardState(card, myLibrary.bookCollection[index]);
+        const book = myLibrary.getBook(index);
+        book.changeReadStatus();
+        setCardState(card, book);
     }
 }
 

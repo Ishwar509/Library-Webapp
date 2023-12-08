@@ -1,10 +1,9 @@
-const formElement = document.querySelector('form');
 
-function getFormData(){
-    const title = document.getElementById('titleInput').value;
-    const author = document.getElementById('authorInput').value;
-    const pages = Number(document.getElementById('pagesInput').value);
-    const isRead = document.getElementById('isRead').checked;
+function getFormData(formElement){
+    const title = formElement.querySelector('#titleInput').value;
+    const author = formElement.querySelector('#authorInput').value;
+    const pages = Number(formElement.querySelector('#pagesInput').value);
+    const isRead = formElement.querySelector('#isRead').checked;
 
     formElement.reset();
 

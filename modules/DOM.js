@@ -1,7 +1,7 @@
 
-const bookCardContainer = document.querySelector('.book-card-container');
+const bookCardContainer = document.querySelector('.bookCardContainer');
 const bookCardTemplate = document.querySelector('template');
-const endCard = document.querySelector('.dialogBtn-card');
+const endCard = document.querySelector('.dialogBtnCard');
 
 function getCardTemplate(){
     const card = document.createElement('div');
