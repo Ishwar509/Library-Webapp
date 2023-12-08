@@ -16,34 +16,25 @@
             <h1>Book Base</h1>
         </div>
         <div class="main">
-            <div class="book-card-container">
-                <div class="card book">
-                    <p class="title">Game of Thrones</p>
-                    <p class="author">By: George R.R Martin</p>
-                    <p class="pages">Pages: 900</p>
-                    <p class="btnGroup">
-                        <button class="readStatusBtn">Mark as Read</button>
-                        <button class="delBtn">Delete</button>
-                    </p>
-                </div>
-                <div class="card dialogBtn-card">
-                    <button class="showDialogBtn">+</button>
+            <div class="bookCardContainer">
+                <div class="card dialogBtnCard">
+                    <button data-action="addBook">+</button>
                 </div>
             </div>
         </div>
         <div class="footer">
-            Footer
+            <p>Made by Anonymous</p>
         </div>
     </div>
 
     <dialog>
         <form method="dialog">
             <p>
-                <label for="titleInput">Title </label><br>
+                <label for="titleInput">Title* </label><br>
                 <input type="text" id="titleInput" name="title" required minlength="1" maxlength="20" pattern="^[\w]+$">
             </p>
             <p>
-                <label for="authorInput">Author </label><br>
+                <label for="authorInput">Author* </label><br>
                 <input type="text" name="author" id="authorInput" required minlength="1" maxlength="20" pattern="^[\w]+$">
             </p>
             <p>
@@ -55,8 +46,8 @@
                 <input type="checkbox" id="isRead" name="isRead">
             </p>
             <p>
-                <button class="add-book">Add Book</button>
-                <button type="reset" class="cancelBtn">Cancel</button>
+                <button type="submit" data-action="confirm">Add Book</button>
+                <button type="reset" data-action="closeForm">Cancel</button>
             </p>
         </form>
     </dialog>
@@ -66,8 +57,8 @@
         <p class="author"></p>
         <p class="pages"></p>
         <p class="btnGroup">
-            <button class="readStatusBtn">Mark as Read</button>
-            <button class="delBtn">Delete</button>
+            <button data-action="changeStatus">Mark as Read</button>
+            <button data-action="delete">Delete</button>
         </p>
     </template>
 </body>

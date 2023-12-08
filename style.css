@@ -1,10 +1,11 @@
+@import url(https://fonts.googleapis.com/css2?family=Mina&family=Roboto+Mono);
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Mina', 'Roboto Mono', monospace, sans-serif;
 }
-
 
 .container {
     min-height: 100vh;
@@ -12,25 +13,33 @@
     grid-template-rows: 60px 1fr 60px;
 }
 
-.main {
-    padding: 20px;
-    background-color: aqua;
-}
-
-.book-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, max-content));
-    justify-content: center;
-    gap: 20px;
-}
-
-.card {
-    height: 200px;
+.header {
+    background-color: #00A9FF;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
-    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+.main {
+    padding: 20px;
+    background-color: #A0E9FF;
+}
+
+.bookCardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, max-content));
+    justify-content: center;
+    gap: 30px;
+}
+
+.card {
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 16px;
 }
 
 .book {
@@ -38,21 +47,30 @@
     justify-content: space-around;
     align-items: flex-start;
     padding: 0 10px;
-    background-color: lightcoral;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(225deg , #EB2A5D, #FF6F41, #FFB44B, #FFEB7D);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book:hover, button[data-action="addBook"]:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    transform: scale(1.05);
 }
 
 .book .title {
     font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     max-width: 100%;
     overflow-wrap: break-word;
 }
 
 .book .author {
     font-style: italic;
+    letter-spacing: 1px;
 }
 
-.readStatusBtn, .delBtn {
+button[data-action="changeStatus"], button[data-action="delete"] {
     width: 100px;
     height: 20px;
     font-size: 0.7rem;
@@ -60,34 +78,79 @@
 }
 
 .book.read {
-    background-color: yellowgreen;
+    background-image: linear-gradient(225deg, #CFFF8D, #A8E890, #749F82, #425F57);
 }
 
-.dialogBtn-card {
-    background-color: lightgray;
+
+.footer {
+    background-color: #CDF5FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.showDialogBtn {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    font-size: 2rem;
-    background-color: yellowgreen;
+.dialogBtnCard {
+    border: none;
+}
+
+button[data-action="addBook"] {
+    width: 80px;
+    height: 80px;
+    padding-top: 2px;
+    border-radius: 50%;
+    font-size: 3rem;
+    background-color: #B1AFFF;
 }
 
 dialog {
     margin: auto auto;
     width: 400px;
-    height: 400px;
+    height: 450px;
     border-radius: 10px;
 }
 
 dialog form {
     height: 100%;
+    padding: 0 40px;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
+    background-color: whitesmoke;
+}
+
+form input {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+form input:focus {
+    border: none;
+    outline: 3px solid #687EFF;
+}
+
+
+form p:nth-child(n + 4){
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
+}
+
+form p:nth-child(4) label {
+    padding-top: 4px;
+}
+
+form input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    outline: auto;
+}
+
+form button {
+    width: 100px;
+    border-radius: 4px;
 }
 
 dialog::backdrop {
